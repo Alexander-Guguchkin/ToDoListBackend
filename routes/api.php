@@ -10,7 +10,8 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('tasks')->group(function () {
     Route::get('/', [TaskController::class, 'getTasks']);
+    Route::get('/getLastTask', [TaskController::class, 'getLastTask']);
     Route::post('/', [TaskController::class, 'createTask']);
-    Route::patch('/{id}', []);
+    Route::patch('/{id}', [TaskController::class, 'editTask']);
     Route::delete('/{id}', []);
 });

@@ -8,6 +8,7 @@ use App\Contracts\InterfaceTask;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class TaskController extends Controller implements InterfaceTask
 {
@@ -15,15 +16,22 @@ class TaskController extends Controller implements InterfaceTask
         $validated = $request->validated();
         Task::create($validated);
     }
-    public function getTasks(){
+    public function getTasks(): JsonResponse{
         $tasks = Task::all();
         return response()->json([
             'tasks' => $tasks
         ]);
     }
-    // public function getTask();
-    // public function getLastTask();
-    // public function editTask();
+    public function getLastTask(): JsonResponse{
+        $task = Task::latest()->first();
+        return response()->json([
+            'task' => $task
+        ]);
+    }
+    public function editTask(TaskRequest $request, Task $id){
+        $validated = $request->validated();
+        $id->update($validated);
+    }
     // public function deleteTask();
     // public function completeTask();
 }

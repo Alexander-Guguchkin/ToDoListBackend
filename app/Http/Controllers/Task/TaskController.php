@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Task;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
-use App\Contracts\InterfaceTask;
 use App\Http\Requests\TaskRequest;
+use App\Contracts\InterfaceTask;
 use App\Models\Task;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
@@ -32,6 +33,11 @@ class TaskController extends Controller implements InterfaceTask
         $validated = $request->validated();
         $id->update($validated);
     }
-    // public function deleteTask();
-    // public function completeTask();
+    public function deleteTask(Task $id){
+        $id->delete();
+    }
+     public function completeTask(Task $id){
+        $task = Task::find($id);
+        $task->status = true;
+     }
 }

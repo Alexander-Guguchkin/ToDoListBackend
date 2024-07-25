@@ -10,6 +10,6 @@ interface InterfaceTask
     public function getTasks();
     public function getLastTask();
     public function editTask(TaskRequest $request, Task $id);
-    // public function deleteTask();
-    // public function completeTask();
+    public function deleteTask(Task $id);
+    public function completeTask( Task $id);
 }

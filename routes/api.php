@@ -1,7 +1,10 @@
 <?php
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Task\TaskController;
+use App\Http\Controllers\Search\SearchController;
 
 Route::get('/user', function (Request $request) {
 return $request->user();
@@ -14,4 +17,8 @@ Route::prefix('tasks')->group(function () {
     Route::patch('/{id}', [TaskController::class, 'editTask']);
     Route::patch('/complete/{id}', [TaskController::class, 'completeTask']);
     Route::delete('/{id}', [TaskController::class, 'deleteTask']);
+});
+Route::prefix('search')->group(function () {
+    Route::get('/{id}', [SearchController::class, 'searchTask']);
+    Route::get('/complete/{id}', [SearchController::class, 'searchCompleteTask']);
 });

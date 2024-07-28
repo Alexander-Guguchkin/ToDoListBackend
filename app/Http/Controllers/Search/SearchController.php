@@ -9,10 +9,10 @@ use \Illuminate\Http\JsonResponse;
 
 class SearchController extends Controller implements InterfaceSearch
 {
-    public function searchTask(Task $id): JsonResponse
+    public function searchTask(Task $textTask): JsonResponse
     {
        return response()->json([
-        'tasks' => $id
+        'tasks' => $textTask->text // нужно пробрасывать id сюда
        ]);
     }
     public function searchCompleteTask(Task $id): JsonResponse

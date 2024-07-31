@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Contracts;
-use App\Models\Task;
+use App\Http\Requests\TaskRequest;
 use \Illuminate\Http\JsonResponse;
+
 interface InterfaceSearch
 {
-    public function searchTask(Task $textTask): JsonResponse;
-    public function searchCompleteTask(Task $id): JsonResponse;
+    public function searchTask(TaskRequest $request): JsonResponse;
+    public function searchCompleteTask(): JsonResponse;
 }

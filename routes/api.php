@@ -19,6 +19,6 @@ Route::prefix('tasks')->group(function () {
     Route::delete('/{id}', [TaskController::class, 'deleteTask']);
 });
 Route::prefix('search')->group(function () {
-    Route::get('/{id}', [SearchController::class, 'searchTask']);
-    Route::get('/complete/{id}', [SearchController::class, 'searchCompleteTask']);
+    Route::get('/', [SearchController::class, 'searchTask']);
+    Route::get('/complete/', [SearchController::class, 'searchCompleteTask']);
 });

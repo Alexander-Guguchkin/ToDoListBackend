@@ -10,9 +10,8 @@ use \Illuminate\Http\JsonResponse;
 
 class SearchController extends Controller implements InterfaceSearch
 {
-    public function searchTask(TaskRequest $request): JsonResponse
+    public function searchTask($task): JsonResponse
     {
-        $task = $request->validated();
         $res = Task::where('text', '=', $task)->get();
        return response()->json([
         'tasks' => $res

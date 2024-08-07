@@ -10,6 +10,12 @@ Route::get('/user', function (Request $request) {
 return $request->user();
 })->middleware('auth:sanctum');
 
+
+Route::group(['middleware' => 'auth:sanctum'], function (){
+    Route::get('/test', function (){
+        dump('test');
+    });
+});
 Route::prefix('tasks')->group(function () {
     Route::get('/', [TaskController::class, 'getTasks']);
     Route::get('/last', [TaskController::class, 'getLastTask']);

@@ -21,6 +21,7 @@ return [
         Sanctum::currentApplicationUrlWithPort()
     ))),
 
+    'prefix' => 'api/sanctum',
     /*
     |--------------------------------------------------------------------------
     | Sanctum Guards
